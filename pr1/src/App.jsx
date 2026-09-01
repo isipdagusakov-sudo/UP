@@ -1,8 +1,6 @@
 import './App.css'
 import ProductCard from './components/ProductCard'
 
-// Массив товаров. Данные хранятся в App и передаются
-// в каждую карточку через props.
 const products = [
   {
     id: 1,
@@ -30,16 +28,12 @@ const products = [
   },
 ]
 
-// Корневой компонент приложения: выводит заголовок
-// и список карточек товаров
 function App() {
   return (
     <div className="app">
       <h1 className="app__title">Каталог товаров</h1>
 
       <div className="app__cards">
-        {/* Для каждого товара создаём свою карточку.
-            key нужен React, чтобы различать элементы списка */}
         {products.map((product) => (
           <ProductCard
             key={product.id}

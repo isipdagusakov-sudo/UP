@@ -1,4 +1,3 @@
-/* Стили корневого компонента App */
 .app {
   max-width: 1100px;
   margin: 0 auto;
@@ -12,7 +11,6 @@
   text-align: center;
 }
 
-/* Карточки выстраиваются в ряд и переносятся на новую строку */
 .app__cards {
   display: flex;
   flex-wrap: wrap;

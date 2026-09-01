@@ -1,23 +1,19 @@
 import { useState } from 'react'
 import './ProductCard.css'
 
-// Компонент «Карточка товара».
-// Данные о товаре (название, цена, картинка) приходят через props из App.
 function ProductCard({ name, price, image }) {
-  // count — сколько штук товара добавлено в корзину.
-  // Состояние объявлено внутри компонента, поэтому у каждой карточки
-  // свой независимый счётчик.
   const [count, setCount] = useState(0)
 
-  // Обработчик нажатия на кнопку «Добавить в корзину»:
-  // увеличиваем количество на 1
   const handleAdd = () => {
-    setCount(count + 1)
+    setCount((prev) => prev + 1)
+  }
+
+  const handleRemove = () => {
+    setCount((prev) => Math.max(0, prev - 1))
   }
 
   return (
     <article className="product-card">
-      {/* Изображение товара (ссылка или заглушка-placeholder) */}
       <img className="product-card__image" src={image} alt={name} />
 
       <h2 className="product-card__name">{name}</h2>
@@ -27,7 +23,14 @@ function ProductCard({ name, price, image }) {
         Добавить в корзину
       </button>
 
-      {/* Текущее количество выбранного товара */}
+      <button
+        className="product-card__button product-card__button--remove"
+        onClick={handleRemove}
+        disabled={count === 0}
+      >
+        Убрать из корзины
+      </button>
+
       <p className="product-card__count">
         {count > 0 ? `В корзине: ${count} шт.` : 'Товар ещё не в корзине'}
       </p>
